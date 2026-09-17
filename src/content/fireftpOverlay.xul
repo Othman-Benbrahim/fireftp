@@ -16,14 +16,14 @@
   <!-- Firefox Tools -> WebDeveloper menu -->
   <menupopup id="menuWebDeveloperPopup">
     <menuitem      id="menu_webDeveloper_fireftp"   label="FireFTP"       oncommand="loadFireFTP()"
-                   accesskey="F"           insertbefore="webConsole"         class="menuitem-iconic"/>
+                   accesskey="F"           insertbefore="menu_pageSource"         class="menuitem-iconic"/>
   </menupopup>
 
   <!-- Firefox 4 Web Developer menu -->
   <menupopup id="appmenu_webDeveloper_popup">
     <menuitem      id="appmenu_fireftp"   label="FireFTP"       oncommand="loadFireFTP()"
-                   accesskey="F"           insertbefore="appmenu_webConsole"  class="menuitem-iconic" iconic="true" />
-    <menuseparator insertbefore="appmenu_webConsole" />
+                   accesskey="F"           insertbefore="appmenu_pageSource"  class="menuitem-iconic" iconic="true" />
+    <menuseparator insertbefore="appmenu_pageSource" />
   </menupopup>
 
   <!-- SeaMonkey -->

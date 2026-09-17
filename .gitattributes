@@ -1,0 +1,10 @@
+# Fichiers binaires : jamais de conversion de fin de ligne
+*.xpi   binary
+*.xpt   binary
+*.ico   binary
+*.png   binary
+*.gif   binary
+*.jpg   binary
+*.blend binary
+# Scripts Windows
+*.ps1   text eol=crlf

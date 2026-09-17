@@ -14,10 +14,12 @@ sed -e s/__l10n__/$FIREFTP_LANG/g \
 
 sed -e s/__VERSION__/$FIREFTP_VER/g content/js/etc/globals.js.in > content/js/etc/globals.js
 
-rm ../downloads/fireftp_$FIREFTP_LANG.xpi
+OUT=../dist/fireftp-$FIREFTP_VER-palemoon.xpi
+mkdir -p ../dist
+rm -f $OUT
 
 
-zip -q -r9 ../downloads/fireftp_$FIREFTP_LANG.xpi \
+zip -q -r9 $OUT \
   content \
   locale/af \
   locale/af-ZA \
@@ -96,3 +98,4 @@ zip -q -r9 ../downloads/fireftp_$FIREFTP_LANG.xpi \
   -x "*/CVS/*" "*.in" "*.DS_Store" "*.swp" "*/.git/*" "*.gitignore"
 
 rm -rf chrome
+echo "OK : $OUT"

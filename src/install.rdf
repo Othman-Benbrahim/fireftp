@@ -7,36 +7,20 @@
     <em:creator>Mime &#268;uvalo</em:creator>
     <em:contributor>Devin Pohly</em:contributor>
     <em:contributor>Scott Bentley</em:contributor>
-    <em:description>FTP client for Mozilla Firefox.</em:description>
+    <em:description>FTP/SFTP client for Pale Moon.</em:description>
     <em:homepageURL>http://fireftp.net</em:homepageURL>
     <em:name>FireFTP</em:name>
-    <em:version>2.0.32</em:version>
+    <em:version>2.0.33</em:version>
     <em:id>{a7c6cf7f-112c-4500-a7ea-39801a327e5f}</em:id>
     <em:unpack>true</em:unpack>
     <em:type>2</em:type>
     <em:multiprocessCompatible>true</em:multiprocessCompatible>
-    <!-- Firefox -->
-    <em:targetApplication>
-      <Description>
-        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>32.0</em:minVersion>
-        <em:maxVersion>48.*</em:maxVersion>
-      </Description>
-    </em:targetApplication>
-    <!-- SeaMonkey -->
-    <em:targetApplication>
-      <Description>
-        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
-        <em:minVersion>2.1</em:minVersion>
-        <em:maxVersion>2.41.*</em:maxVersion>
-      </Description>
-    </em:targetApplication>
     <!-- Pale Moon -->
     <em:targetApplication>
       <Description>
         <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
-        <em:minVersion>27.0.0a1</em:minVersion>
-        <em:maxVersion>29.*</em:maxVersion>
+        <em:minVersion>29.0</em:minVersion>
+        <em:maxVersion>35.*</em:maxVersion>
       </Description>
     </em:targetApplication>
     <em:optionsURL>chrome://fireftp/content/preferences.xul</em:optionsURL>

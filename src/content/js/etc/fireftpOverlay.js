@@ -97,12 +97,7 @@ function fireFTPInitListener(event) {
   }
 
   if (!donated) {
-    prefBranch.setBoolPref("donated", true);
-
-    var windowContent = window.getBrowser();
-    window.setTimeout(function() {
-      windowContent.selectedTab = windowContent.addTab("http://fireftp.net/donate.html?installed=true");
-    }, 0);
+    prefBranch.setBoolPref("donated", true);                  // fireftp.net n'est plus maintenu : on n'ouvre plus d'onglet
   }
 }
 

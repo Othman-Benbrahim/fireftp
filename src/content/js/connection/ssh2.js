@@ -55,7 +55,19 @@ ssh2Mozilla.prototype = {
 
         onDataAvailable : function(request, context, inputStream, offset, count) {
           try {
-            self.transport.fullBuffer += self.controlInstream.readBytes(count);  // read data
+            // Lecture tolerante : si le serveur ferme la connexion, le flux peut
+            // livrer moins que 'count' octets -> readBytes() levait NS_ERROR_FAILURE
+            // et masquait la vraie cause (ex. negociation SSH refusee).
+            var avail = 0;
+            try {
+              avail = self.controlInstream.available();
+            } catch (closedEx) {
+              avail = 0;
+            }
+            var toRead = Math.min(count, avail);
+            if (toRead > 0) {
+              self.transport.fullBuffer += self.controlInstream.readBytes(toRead);  // read data
+            }
 
             if (!self.gotWelcomeMessage && self.transport.fullBuffer.indexOf('\n') == self.transport.fullBuffer.length - 1) {
               self.onConnected();
@@ -64,6 +76,11 @@ ssh2Mozilla.prototype = {
             self.transport.run();
           } catch(ex) {
             self.observer.onDebug(ex);
+
+            if (ex && ex.message && ex.message.indexOf('Incompatible ssh') == 0) {
+              // ex. serveur n'offrant que des cles hote Ed25519/ECDSA
+              self.observer.onError(ex.message);
+            }
 
             if (ex instanceof paramikojs.ssh_exception.AuthenticationException) {
               self.client.legitClose = true;

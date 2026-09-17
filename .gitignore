@@ -3,3 +3,7 @@
 *.svn
 *.swp
 CVS
+
+# sorties de build
+dist/
+src/chrome/
