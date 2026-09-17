@@ -20,3 +20,13 @@ paramikojs.KexGroup14.G = new BigInteger("2", 10);
 paramikojs.KexGroup14.prototype = {
   name : 'diffie-hellman-group14-sha1'
 };
+
+// diffie-hellman-group14-sha256 (RFC 8268) : meme groupe, hachage SHA-256
+paramikojs.KexGroup14SHA256 = function(transport) {
+  inherit(this, new paramikojs.KexGroup14(transport));
+  this.hash_algo = kryptos.hash.SHA256;
+}
+
+paramikojs.KexGroup14SHA256.prototype = {
+  name : 'diffie-hellman-group14-sha256'
+};

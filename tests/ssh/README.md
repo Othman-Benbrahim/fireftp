@@ -10,6 +10,12 @@ Ils ne remplacent pas un test dans Pale Moon, mais valident la couche SSH/SFTP.
 
 Vérifie `ssh-rsa`, `rsa-sha2-256` et `rsa-sha2-512` dans les deux sens contre OpenSSL.
 
+## X25519 (aucun serveur requis)
+
+    node tests/ssh/test_x25519.js
+
+Vecteurs de la RFC 7748, plus comparaison avec OpenSSL sur des clés aléatoires.
+
 ## Connexion réelle à un serveur SSH
 
 PowerShell :

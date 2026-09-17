@@ -88,7 +88,7 @@ paramikojs.KexGroup1.prototype = {
     hm.add_mpint(this.e);
     hm.add_mpint(this.f);
     hm.add_mpint(K);
-    this.transport._set_K_H(K, new kryptos.hash.SHA(hm.toString()).digest());
+    this.transport._set_K_H(K, new this.hash_algo(hm.toString()).digest());
     this.transport._verify_key(host_key, sig);
     this.transport._activate_outbound();
   }

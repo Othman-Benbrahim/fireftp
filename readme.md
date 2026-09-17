@@ -4,6 +4,19 @@ Fork de [FireFTP](https://github.com/mimecuvalo/fireftp) de Mime Čuvalo, mainte
 fonctionner avec **Pale Moon 29 à 35.x** et avec les **serveurs OpenSSH récents**.
 Le développement du FireFTP d'origine s'est arrêté à la version 2.0.32.
 
+## Correctifs de la version 2.0.34
+
+**Connexion SFTP aux serveurs OpenSSH 10.** C'est le cas d'Ionos, par exemple. Le symptôme était
+`Incompatible ssh peer (no acceptable kex algorithm)`. OpenSSH 10.0 ne propose plus aucun
+échange Diffie-Hellman classique par défaut, seulement des courbes elliptiques et des
+algorithmes post-quantiques.
+- Nouvel échange de clés `curve25519-sha256` / `curve25519-sha256@libssh.org` (RFC 8731),
+  avec une implémentation X25519 validée contre la RFC 7748 et OpenSSL
+  (`kex_curve25519.js`). C'est désormais l'algorithme préféré.
+- Ajout de `diffie-hellman-group14-sha256` (RFC 8268).
+- Correctif : l'échange Diffie-Hellman à groupe fixe hachait toujours en SHA-1, même quand
+  l'algorithme négocié en demandait un autre.
+
 ## Correctifs de la version 2.0.33
 
 **Connexion SFTP aux serveurs OpenSSH 8.8 et plus récents.** Le symptôme était l'erreur
@@ -28,15 +41,16 @@ qu'OpenSSH refuse par défaut. Le serveur fermait alors la connexion.
   `dist/fireftp-<version>-palemoon.xpi`.
 
 **Limites connues** : les serveurs qui n'offrent *que* des clés d'hôte Ed25519 ou
-ECDSA restent incompatibles. Les clés client Ed25519 ne sont pas prises en charge.
+ECDSA restent incompatibles (il faut une clé d'hôte RSA). Les échanges
+`ecdh-sha2-nistp*`, `sntrup761x25519` et `mlkem768x25519` ne sont pas implémentés. Les clés client Ed25519 ne sont pas prises en charge.
 
 ## Construire le XPI
 
 Windows (PowerShell 5.1 ou 7) :
 
     cd src
-    .\build.ps1                    # -> dist\fireftp-2.0.33-palemoon.xpi
-    .\build.ps1 -Version 2.0.34    # autre numéro de version
+    .\build.ps1                    # -> dist\fireftp-2.0.34-palemoon.xpi
+    .\build.ps1 -Version 2.0.35    # autre numéro de version
 
 Si PowerShell bloque le script : `powershell -ExecutionPolicy Bypass -File .\build.ps1`
 

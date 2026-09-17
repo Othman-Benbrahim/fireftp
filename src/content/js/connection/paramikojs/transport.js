@@ -66,7 +66,9 @@ paramikojs.transport.prototype = {
                          'arcfour128', 'arcfour256' ],
   _preferred_macs : [ 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-sha1', 'hmac-md5', 'hmac-sha1-96', 'hmac-md5-96' ],
   _preferred_keys : [ 'rsa-sha2-512', 'rsa-sha2-256', 'ssh-rsa', 'ssh-dss' ],
-  _preferred_kex  : [ 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group14-sha1', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group1-sha1' ],
+  _preferred_kex  : [ 'curve25519-sha256', 'curve25519-sha256@libssh.org',
+                      'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group14-sha256',
+                      'diffie-hellman-group14-sha1', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group1-sha1' ],
   _preferred_compression : [ 'none' ],
 
   _cipher_info : {
@@ -97,6 +99,9 @@ paramikojs.transport.prototype = {
   },
 
   _kex_info : {
+    'curve25519-sha256': function(self) { return new paramikojs.KexCurve25519(self) },
+    'curve25519-sha256@libssh.org': function(self) { return new paramikojs.KexCurve25519(self) },
+    'diffie-hellman-group14-sha256': function(self) { return new paramikojs.KexGroup14SHA256(self) },
     'diffie-hellman-group1-sha1': function(self) { return new paramikojs.KexGroup1(self) },
     'diffie-hellman-group14-sha1': function(self) { return new paramikojs.KexGroup14(self) },
     'diffie-hellman-group-exchange-sha1': function(self) { return new paramikojs.KexGex(self) },

@@ -13,11 +13,11 @@
 .EXAMPLE
   cd src
   .\build.ps1
-  .\build.ps1 -Version 2.0.34 -MaxVersion "36.*"
+  .\build.ps1 -Version 2.0.35 -MaxVersion "36.*"
 #>
 [CmdletBinding()]
 param(
-  [string]$Version    = "2.0.33",
+  [string]$Version    = "2.0.34",
   [string]$MinVersion = "29.0",
   [string]$MaxVersion = "35.*",
   [string]$OutDir     = (Join-Path $PSScriptRoot "..\dist")

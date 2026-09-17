@@ -17,7 +17,7 @@ const order = ['kryptos/kryptos.js','kryptos/Cipher/AES.js','kryptos/Cipher/Blow
  'kryptos/Random/_UserFriendlyRNG.js','kryptos/Random/Fortuna/SHAd256.js','kryptos/Random/Fortuna/FortunaAccumulator.js',
  'kryptos/Random/Fortuna/FortunaGenerator.js','kryptos/Random/OSRNG/browser.js','common.js','python_shim.js','BigInteger.js',
  'agent.js','auth_handler.js','ber.js','channel.js','client.js','compress.js','dsskey.js','file.js','hostkeys.js',
- 'kex_gex.js','kex_group1.js','kex_group14.js','message.js','packet.js','pkey.js','rsakey.js','sftp_attr.js',
+ 'kex_gex.js','kex_group1.js','kex_group14.js','kex_curve25519.js','message.js','packet.js','pkey.js','rsakey.js','sftp_attr.js',
  'sftp_client.js','sftp_file.js','sftp.js','ssh_exception.js','transport.js','unknown_key.js','util.js','win_pageant.js'];
 const logs = [];
 const ctx = {
